@@ -1,3 +1,7 @@
+build/
+
+eqgamepatch*
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
