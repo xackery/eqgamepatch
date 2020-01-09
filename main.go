@@ -7,9 +7,12 @@ import (
 	"github.com/xackery/eqgamepatch/ui"
 )
 
-func main() {
+const (
+	title = "EQ Game Patch"
+)
 
-	ui, err := ui.New()
+func main() {
+	ui, err := ui.New(title)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)

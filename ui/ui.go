@@ -20,11 +20,13 @@ type UI struct {
 	progressValue float64
 	image         *canvas.Image
 	box           packr.Box
+	title         string
 }
 
 // New creates a new UI
-func New() (*UI, error) {
+func New(title string) (*UI, error) {
 	ui := new(UI)
+	ui.title = title
 	ui.box = packr.NewBox("./assets")
 	return ui, nil
 }
@@ -33,7 +35,7 @@ func New() (*UI, error) {
 func (ui *UI) Start() error {
 	app := app.New()
 
-	w := app.NewWindow("EQGamePatch")
+	w := app.NewWindow(ui.title)
 	ui.progressBar = widget.NewProgressBar()
 	/*w.SetContent(widget.NewVBox(
 		//widget.NewLabel("Hello Fyne!"),
@@ -53,9 +55,9 @@ func (ui *UI) Start() error {
 	)
 
 	ui.image = &canvas.Image{FillMode: canvas.ImageFillOriginal}
-	r, err := ui.box.Open("rof.png")
+	r, err := ui.box.Open("splash.png")
 	if err != nil {
-		return errors.Wrapf(err, "failed to open %s", "rof.png")
+		return errors.Wrapf(err, "failed to open %s", "splash.png")
 	}
 	ui.image.Image, err = png.Decode(r)
 	if err != nil {
@@ -65,13 +67,7 @@ func (ui *UI) Start() error {
 
 	ui.image.Resize(fyne.Size{Width: 400, Height: 450})
 
-	/*w.SetContent(fyne.NewContainerWithLayout(layout.NewGridLayout(1),
-		ui.image,
-
-		fyne.NewContainerWithLayout(layout.NewGridLayout(1)), buttons),
-	)*/
 	w.SetContent(widget.NewVBox(
-		//widget.NewLabel("Hello Fyne!"),
 		ui.image,
 		ui.progressBar,
 		buttons,
