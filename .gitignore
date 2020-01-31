@@ -2,6 +2,12 @@ build/
 
 eqgamepatch*
 
+checksum.dat
+eqgame.exe
+*.txt
+*.s3d
+s3d
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

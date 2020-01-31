@@ -4,22 +4,18 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/xackery/eqgamepatch/ui"
-)
-
-const (
-	title = "EQ Game Patch"
+	"github.com/xackery/eqgamepatch/s3d"
 )
 
 func main() {
-	ui, err := ui.New(title)
+	a, err := s3d.New("s3d/abysmal_obj.s3d")
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(1)
+		os.Exit(0)
 	}
-	err = ui.Start()
-	if err != nil {
-		fmt.Println("start", err)
-		os.Exit(1)
+	if err := a.ExtractAll("s3d/out"); err != nil {
+		fmt.Println(err)
+		os.Exit(0)
 	}
+
 }
