@@ -6,7 +6,8 @@ checksum.dat
 eqgame.exe
 *.txt
 *.s3d
-s3d
+s3d/out/
+*.pak
 
 # Binaries for programs and plugins
 *.exe
